@@ -1,4 +1,4 @@
-<baudiber>'s vim setup (thanks vimman for your amazing init.vim file)
+My vim setup (thanks vimman for your amazing init.vim file)
 
 Installation
 
