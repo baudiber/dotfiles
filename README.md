@@ -4,7 +4,7 @@ Installation
 
 * Install onedark for vim and iterm2
 
-  -for VIM
+  -for VIM  
     git clone https://github.com/joshdick/onedark.vim.git  
     Install the theme by placing colors/onedark.vim in your ~/.vim/colors/ directory and 
     autoload/onedark.vim in your ~/.vim/autoload/ directory
