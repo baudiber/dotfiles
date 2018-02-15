@@ -9,11 +9,10 @@ set scrolloff=50	" Affiche un minimum de 5 lignes autour du curseur
 set shiftwidth=4	" Regle les tabulations automatiques sur 4 espaces
 set tabstop=4		" Regle l'affichage des tabulations sur 4 espaces
 set splitright		" Ouvre les verticalsplit sur la droite
-" Use space as <mapleader> key
-:let mapleader = " "
-"set laststatus=2	" Affiche la bar de status
+:let mapleader = " "  " Use space as <mapleader> key
+set laststatus=2	" Affiche la bar de status
 set cc=80			" Change la couleur de fond a 80 colonnes
-"set showcmd			" Affiche les commandes incompletes
+set showcmd		" Affiche les commandes incompletes
 "set wildmenu		" Show autocompletion possibles
 "set noshowmode		" Dont show -- INSERT --, -- VISUAL -- whene changing mode
 set cursorline
@@ -41,3 +40,28 @@ if (has("autocmd") && !has("gui_running"))
   augroup END
 endif
 colorscheme onedark
+
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%m\
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+"set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+"set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ "
+
