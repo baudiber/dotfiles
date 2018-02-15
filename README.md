@@ -16,5 +16,5 @@ Installation
 * Install ohmyzsh ##OPTIONAL##  
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-* Install .vimrc
+* Install .vimrc  
     copy .vimrc in the ~ folder
