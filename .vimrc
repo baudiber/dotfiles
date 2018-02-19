@@ -20,6 +20,9 @@ set cursorline
 set ignorecase		" Ignore la casse lors d'une recherche
 set smartcase		" Sauf si la recherche contient une majuscule
 set incsearch		" Surligne le resultat pendant la saisie
+set cindent			" smart indentation for C language
+nnoremap <leader>S :set scrolloff=50<cr>
+nnoremap <leader>s :set scrolloff=1<cr>
 nnoremap <leader>N :set relativenumber!<cr>
 nnoremap <leader>n :set number!<cr>
 set noswapfile
