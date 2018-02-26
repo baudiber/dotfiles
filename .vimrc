@@ -35,6 +35,7 @@ let g:onedark_termcolors=256
 " `gui` is the hex color code used in GUI mode/nvim true-color mode
 " `cterm` is the color code used in 256-color mode
 " `cterm16` is the color code used in 16-color mode
+"if (has("autocmd") && !has("gui_running"))     remove !  to cancel if condition
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
     autocmd!
@@ -43,6 +44,8 @@ if (has("autocmd") && !has("gui_running"))
   augroup END
 endif
 colorscheme onedark
+"set background=light	" Utilise des couleurs adaptees pour fond clair
+"colorscheme PaperColor
 
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
