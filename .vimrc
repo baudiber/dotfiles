@@ -1,4 +1,5 @@
 syntax enable		" Active la coloration syntaxique
+noremap <C-N> :Ex<CR>
 set mouse=a			" Permet d'utiliser la souris
 set title			" Met a jour le titre du terminal
 set number			" Affiche le numero de ligne
