@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/Admin/WM/ssp_v1'
+let g:netrw_dirhist_2='/Users/Admin/WM/ssp_v1/test_files'
+let g:netrw_dirhist_3='/Users/Admin/WM/ssp_v1'
+let g:netrw_dirhist_4='/Users/Admin/WM'
+let g:netrw_dirhist_5='/Users/Admin/WM/ssp_v1'
+let g:netrw_dirhist_6='/Users/Admin/42/1b_graph/fdf'
+let g:netrw_dirhist_7='/Users/Admin/42/1b_graph/fdf/srcs'
+let g:netrw_dirhist_8='/Users/Admin/WM/ssp_v1/cgi'
