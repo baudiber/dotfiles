@@ -1,5 +1,7 @@
 syntax enable		" Active la coloration syntaxique
 set backspace=indent,eol,start
+set synmaxcol=100
+set regexpengine=1
 noremap <C-N> :Ex<CR>
 set mouse=a			" Permet d'utiliser la souris
 set title			" Met a jour le titre du terminal
