@@ -16,6 +16,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/goyo.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -31,7 +32,7 @@ call plug#end()
 "==========================     KEY PLUGINS         ===========================
 
 :let mapleader = " "  " Use space as <mapleader> key
-noremap <C-N> :Ex<CR>
+nnoremap <leader>e :Ex<CR>
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 nnoremap <leader>S :set scrolloff=50<cr>
 nnoremap <leader>D :set scrolloff=20<cr>
@@ -39,6 +40,7 @@ nnoremap <leader>s :set scrolloff=1<cr>
 nnoremap <leader>N :set relativenumber!<cr>
 nnoremap <leader>n :set number!<cr>
 nnoremap <leader>l :set list!<cr>
+nnoremap <leader>w <C-w>
 nnoremap <leader>g :Goyo<cr>
 nmap <silent> <RIGHT>			:cnext<CR>
 nmap <silent> <RIGHT><RIGHT>	:cnfile<CR><C-G>
@@ -65,7 +67,7 @@ set splitright		" Ouvre les verticalsplit sur la droite
 set laststatus=2	" Affiche la bar de status
 set cc=80			" Change la couleur de fond a 80 colonnes
 set showcmd			" Affiche les commandes incompletes
-"set wildmenu		" Show autocompletion possibles
+set wildmenu		" Show autocompletion possibles
 "set noshowmode		" Dont show -- INSERT --, -- VISUAL -- whene changing mode
 set ignorecase		" Ignore la casse lors d'une recherche
 set smartcase		" Sauf si la recherche contient une majuscule
