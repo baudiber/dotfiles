@@ -16,6 +16,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/goyo.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()

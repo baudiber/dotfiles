@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/Admin/42/parse_wolf'
+let g:netrw_dirhist_2='/Users/Admin/42/parse_wolf/srcs'
+let g:netrw_dirhist_3='/Users/Admin/42/parse_wolf/includes'
+let g:netrw_dirhist_4='/Users/Admin/42/parse_wolf'
+let g:netrw_dirhist_5='/Users/Admin/42/parse_wolf/srcs'
+let g:netrw_dirhist_6='/Users/Admin/42/parse_wolf/map'
