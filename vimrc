@@ -1,5 +1,5 @@
 "VIM RUN COMMANDS baudiber March 2019
-"to reload without restart = :source $MYVIMRC
+"to reload without restart = :source $MYVIMRC  or  :so % 
 
 "------------------------------------------------------------------------------
 "==========================     VIM PLUG INSTALL    ===========================
@@ -16,8 +16,11 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/goyo.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'bfrg/vim-cpp-modern'
 Plug 'ayu-theme/ayu-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'rbong/vim-crystalline'
 
 call plug#end()
 
@@ -30,11 +33,39 @@ call plug#end()
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
 "------------------------------------------------------------------------------
+"==========================     CRYSITALLINE        ===========================
+
+"%f filepath %P percentofviewedtext %c charcount %=%m  modified flag
+"set statusline=%=%m\ %c \ %P\ %f\
+function! StatusLine(current)
+  return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
+        \ . ' %f%h%w%m%r '
+        \ . (a:current ? '%#CrystallineFill# %{fugitive#head()} ' : '')
+        \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
+        \ . '%l/%L %c%V %P '
+endfunction
+
+function! TabLine()
+  let l:vimlabel = has("nvim") ?  " NVIM " : " VIM "
+  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+endfunction
+
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_tabline_fn = 'TabLine'
+let g:crystalline_theme = 'default'
+
+set showtabline=2
+set laststatus=2
+
+"------------------------------------------------------------------------------
 "==========================     KEY PLUGINS         ===========================
 
 :let mapleader = " "  " Use space as <mapleader> key
-nnoremap <leader>e :Ex<CR>
+"nnoremap <leader>e :Ex<CR>
+nnoremap <leader>e :Lexplore<CR>
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+nnoremap <leader>t :term<cr>
+nnoremap <leader>v :vsplit 
 nnoremap <leader>S :set scrolloff=50<cr>
 nnoremap <leader>D :set scrolloff=20<cr>
 nnoremap <leader>s :set scrolloff=1<cr>
@@ -43,10 +74,12 @@ nnoremap <leader>n :set number!<cr>
 nnoremap <leader>l :set list!<cr>
 nnoremap <leader>w <C-w>
 nnoremap <leader>g :Goyo<cr>
-nmap <silent> <RIGHT>			:cnext<CR>
-nmap <silent> <RIGHT><RIGHT>	:cnfile<CR><C-G>
-nmap <silent> <LEFT>			:cprev<CR>
-nmap <silent> <LEFT><LEFT>		:cpfile<CR><C-G>
+"nmap <silent> <RIGHT>			:cnext<CR>
+nmap <silent> <RIGHT>			:bnext<CR>
+"nmap <silent> <RIGHT><RIGHT>	:cnfile<CR><C-G>
+"nmap <silent> <LEFT>			:cprev<CR>
+nmap <silent> <LEFT>			:bprev<CR>
+"nmap <silent> <LEFT><LEFT>		:cpfile<CR><C-G>
 nnoremap / /\v
 nmap <silent> <BS> :nohlsearch<CR>
 
@@ -65,24 +98,38 @@ set scrolloff=50	" Affiche un minimum de 5 lignes autour du curseur
 set shiftwidth=4	" Regle les tabulations automatiques sur 4 espaces
 set tabstop=4		" Regle l'affichage des tabulations sur 4 espaces
 set splitright		" Ouvre les verticalsplit sur la droite
+set splitbelow		" open horizontal splits below
 set laststatus=2	" Affiche la bar de status
 set cc=80			" Change la couleur de fond a 80 colonnes
 set showcmd			" Affiche les commandes incompletes
 set wildmenu		" Show autocompletion possibles
+set wildmode=longest:full,full
 "set noshowmode		" Dont show -- INSERT --, -- VISUAL -- whene changing mode
 set ignorecase		" Ignore la casse lors d'une recherche
+set hidden
 set smartcase		" Sauf si la recherche contient une majuscule
 set incsearch		" Surligne le resultat pendant la saisie
 set cindent			" smart indentation for C language
 set noswapfile		" vim no longer creates .swp files
 set listchars=tab:→\ ,trail:·,eol:¬,extends:…,precedes:…
-set hlsearch
-set cursorline
+set hlsearch		" hightlight search 
+set cursorline		" highlight current line
 "set cursorcolumn
 set matchpairs+=<:>,=:;
 syntax sync minlines=300 " syntax to be processed for only 300 lines at a time
 set synmaxcol=100        " syntax max X 
 set regexpengine=1
+set ttyfast
+set ttimeout		"time waited for key press to complete
+set ttimeoutlen=50
+"set completeopt=longest,menuone,preview
+set autoread
+"let g:netrw_banner=0 "config Exporer
+let g:netrw_winsize=20
+let g:liststyle=3
+set formatoptions-=cro	"disable autocomments on new line
+au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * set cul
+au WinLeave,FocusLost,CmdwinLeave * set nocul
 
 "------------------------------------------------------------------------------
 "==========================     VIM HELLO LINE      ===========================
@@ -92,11 +139,10 @@ autocmd VimEnter * echo "OwO What's this?"
 "------------------------------------------------------------------------------
 "==========================     VIM THEME           ===========================
 
-set background=dark	" Utilise des couleurs adaptees pour fond noir
 set termguicolors
 "let ayucolor="light"
-"let ayucolor="mirage"
-let ayucolor="dark"
+let ayucolor="mirage"
+"let ayucolor="dark"
 colorscheme ayu
 
 "------------------------------------------------------------------------------
