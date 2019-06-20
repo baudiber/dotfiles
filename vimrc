@@ -61,8 +61,8 @@ set laststatus=2
 "==========================     KEY PLUGINS         ===========================
 
 :let mapleader = " "  " Use space as <mapleader> key
-"nnoremap <leader>e :Ex<CR>
-nnoremap <leader>e :Lexplore<CR>
+nnoremap <leader>e :Ex<CR>
+"nnoremap <leader>e :Lexplore<CR>
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 nnoremap <leader>t :term<cr>
 nnoremap <leader>v :vsplit 
@@ -74,6 +74,8 @@ nnoremap <leader>n :set number!<cr>
 nnoremap <leader>l :set list!<cr>
 nnoremap <leader>w <C-w>
 nnoremap <leader>g :Goyo<cr>
+nnoremap j gj
+nnoremap k gk
 "nmap <silent> <RIGHT>			:cnext<CR>
 nmap <silent> <RIGHT>			:bnext<CR>
 "nmap <silent> <RIGHT><RIGHT>	:cnfile<CR><C-G>
@@ -125,8 +127,8 @@ set ttimeoutlen=50
 "set completeopt=longest,menuone,preview
 set autoread
 "let g:netrw_banner=0 "config Exporer
-let g:netrw_winsize=20
-let g:liststyle=3
+"let g:netrw_winsize=20
+"let g:liststyle=3
 set formatoptions-=cro	"disable autocomments on new line
 au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * set cul
 au WinLeave,FocusLost,CmdwinLeave * set nocul
