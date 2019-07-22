@@ -19,8 +19,11 @@ Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'ayu-theme/ayu-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rbong/vim-crystalline'
+Plug 'rust-lang/rust.vim'
+Plug 'timonv/vim-cargo'
 
 call plug#end()
 
@@ -74,6 +77,7 @@ nnoremap <leader>n :set number!<cr>
 nnoremap <leader>l :set list!<cr>
 nnoremap <leader>w <C-w>
 nnoremap <leader>g :Goyo<cr>
+nnoremap <leader>c :vsp ~/.vimrc<cr>
 nnoremap j gj
 nnoremap k gk
 "nmap <silent> <RIGHT>			:cnext<CR>
@@ -90,7 +94,7 @@ nmap <silent> <BS> :nohlsearch<CR>
 
 syntax enable		" Active la coloration syntaxique
 set backspace=indent,eol,start
-set mouse=a			" Permet d'utiliser la souris
+"set mouse=a			" Permet d'utiliser la souris
 set title			" Met a jour le titre du terminal
 set number			" Affiche le numero de ligne
 set ruler			" Affiche la position actuelle du curseur
@@ -119,7 +123,7 @@ set cursorline		" highlight current line
 "set cursorcolumn
 set matchpairs+=<:>,=:;
 syntax sync minlines=300 " syntax to be processed for only 300 lines at a time
-set synmaxcol=100        " syntax max X 
+"set synmaxcol=100        " syntax max X 
 set regexpengine=1
 set ttyfast
 set ttimeout		"time waited for key press to complete
@@ -145,7 +149,7 @@ set termguicolors
 "let ayucolor="light"
 let ayucolor="mirage"
 "let ayucolor="dark"
-colorscheme ayu
+colorscheme dracula
 
 "------------------------------------------------------------------------------
 "==========================     HELP IN NEW TAB     ===========================
