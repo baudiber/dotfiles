@@ -16,14 +16,15 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/goyo.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'ayu-theme/ayu-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'rbong/vim-crystalline'
 Plug 'rust-lang/rust.vim'
 Plug 'timonv/vim-cargo'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -34,31 +35,6 @@ call plug#end()
 
 "execute pathogen#infect()
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-
-"------------------------------------------------------------------------------
-"==========================     CRYSITALLINE        ===========================
-
-"%f filepath %P percentofviewedtext %c charcount %=%m  modified flag
-"set statusline=%=%m\ %c \ %P\ %f\
-function! StatusLine(current)
-  return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
-        \ . ' %f%h%w%m%r '
-        \ . (a:current ? '%#CrystallineFill# %{fugitive#head()} ' : '')
-        \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
-        \ . '%l/%L %c%V %P '
-endfunction
-
-function! TabLine()
-  let l:vimlabel = has("nvim") ?  " NVIM " : " VIM "
-  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
-endfunction
-
-let g:crystalline_statusline_fn = 'StatusLine'
-let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'default'
-
-set showtabline=2
-set laststatus=2
 
 "------------------------------------------------------------------------------
 "==========================     KEY PLUGINS         ===========================
@@ -149,7 +125,8 @@ set termguicolors
 "let ayucolor="light"
 let ayucolor="mirage"
 "let ayucolor="dark"
-colorscheme dracula
+colorscheme onedark
+let g:airline_theme='onedark'
 
 "------------------------------------------------------------------------------
 "==========================     HELP IN NEW TAB     ===========================
